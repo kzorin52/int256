@@ -1697,6 +1697,19 @@ namespace Nethermind.Int256
             return c;
         }
 
+        public static UInt256 operator %(in UInt256 a, uint b)
+        {
+            UInt256 ub = b;
+            Mod(in a, in ub, out UInt256 c);
+            return c;
+        }
+
+        public static UInt256 operator %(in UInt256 a, in UInt256 b)
+        {
+            Mod(in a, in b, out UInt256 c);
+            return c;
+        }
+
         public static bool operator <(in UInt256 a, in UInt256 b) => LessThan(in a, in b);
         public static bool operator <(in UInt256 a, int b) => LessThan(in a, b);
         public static bool operator <(int a, in UInt256 b) => LessThan(a, in b);

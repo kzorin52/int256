@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Buffers.Binary;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -585,6 +585,66 @@ namespace Nethermind.Int256
             BinaryPrimitives.WriteUInt64LittleEndian(bytes.Slice(16, 8), x._value.u2);
             BinaryPrimitives.WriteUInt64LittleEndian(bytes.Slice(24, 8), x._value.u3);
             return new BigInteger(bytes);
+        }
+
+        public static Int256 operator *(in Int256 a, uint b)
+        {
+            Int256 ub = b;
+            Multiply(in a, in ub, out Int256 c);
+            return c;
+        }
+
+        public static Int256 operator *(uint a, in Int256 b)
+        {
+            Int256 ua = a;
+            Multiply(in ua, in b, out Int256 c);
+            return c;
+        }
+
+        public static Int256 operator *(in Int256 a, long b)
+        {
+            Int256 ub = b;
+            Multiply(in a, in ub, out Int256 c);
+            return c;
+        }
+
+        public static Int256 operator *(long a, in Int256 b)
+        {
+            Int256 ua = a;
+            Multiply(in ua, in b, out Int256 c);
+            return c;
+        }
+
+        public static Int256 operator *(in Int256 a, in Int256 b)
+        {
+            Multiply(in a, in b, out Int256 c);
+            return c;
+        }
+
+        public static Int256 operator /(in Int256 a, uint b)
+        {
+            Int256 ub = b;
+            Divide(in a, in ub, out Int256 c);
+            return c;
+        }
+
+        public static Int256 operator /(in Int256 a, in Int256 b)
+        {
+            Divide(in a, in b, out Int256 c);
+            return c;
+        }
+
+        public static Int256 operator %(in Int256 a, uint b)
+        {
+            Int256 ub = b;
+            Mod(in a, in ub, out Int256 c);
+            return c;
+        }
+
+        public static Int256 operator %(in Int256 a, in Int256 b)
+        {
+            Mod(in a, in b, out Int256 c);
+            return c;
         }
 
         public static explicit operator Int256(BigInteger big) => new(big);

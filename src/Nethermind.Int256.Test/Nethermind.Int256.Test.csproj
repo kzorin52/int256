@@ -15,6 +15,10 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Nethermind.Int256\Nethermind.Int256.csproj" />
   </ItemGroup>

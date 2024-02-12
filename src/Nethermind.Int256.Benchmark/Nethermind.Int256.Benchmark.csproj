@@ -8,6 +8,10 @@
     <PackageReference Include="BenchmarkDotNet" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Nethermind.Int256.Test\Nethermind.Int256.Test.csproj" />
     <ProjectReference Include="..\Nethermind.Int256\Nethermind.Int256.csproj" />
